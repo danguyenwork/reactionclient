@@ -1,0 +1,31 @@
+{
+  "status": 0,
+  "keyword": "audi AND superbowl OR super bowl OR superbowls",
+  "hashtag": ["audi", "superbowl"],
+  "start_date": "2018-02-04 15:30:00",
+  "end_date": "2018-02-04 20:30:300",
+  "sentiment_score": -0.05,
+  "num_tweets": 100,
+  "num_retweets": 200,
+  "num_favorites": 150,
+  "clusters":
+  [
+    {
+      "id": 0,
+      "num_tweets": 25,
+      "num_users": 90,
+      "sentiment_score": 0.50,
+      "tweets_id": [1,2,3,4],
+      "topics": ["racist", "offensive", "dumb"]
+    },
+    {
+      "id": 1,
+      "num_tweets": 100,
+      "num_users": 90,
+      "sentiment_score": -0.75,
+      "tweets_id": [1,2,3,4],
+      "topics": ["thank you", "women", "gender gap"]
+    }
+  ]
+
+}

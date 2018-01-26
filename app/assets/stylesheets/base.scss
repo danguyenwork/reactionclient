@@ -1,0 +1,1432 @@
+
+/* ==========================================================================
+   Table Of Content
+   ==========================================================================
+
+
+   1.General
+   2.Hero section
+   3.Navbar
+   4.Play button
+   5.Featured on
+   6.Benefits
+   7.Features
+   8.video tour
+   9.tour
+   10.Pricing
+   11.reviews
+   12.cta section
+   13.Team
+   14.Twitter feed
+   15.Contact us
+   16.Subscription form styles
+   17.site footer
+   18.Social
+   19.Small devices (tablets, 768px and up)
+   20.Medium devices (desktops, 992px and up)
+
+*/
+
+/* blue: 3396F3; pink: FF5E5E; gray: 8A8A8A;
+
+/* ==========================================================================
+   1.General
+   ========================================================================== */
+
+$primary-color: #FF5E5E;
+$grey-color: #4A4A4A;
+$light-grey-color: #8A8A8A;
+
+
+@font-face {
+  font-family: "San Francisco Display Ultralight";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.eot?#iefix) format("embedded-opentype"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff2) format("woff2"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff) format("woff"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.ttf) format("truetype"), url("fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.svg#San Francisco Display Ultralight") format("svg")
+}
+
+@font-face {
+  font-family: "San Francisco Display Thin";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.eot?#iefix) format("embedded-opentype"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff2) format("woff2"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff) format("woff"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.ttf) format("truetype"), url("fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.svg#San Francisco Display Thin") format("svg")
+}
+
+@font-face {
+  font-family: "San Francisco Display Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.eot?#iefix) format("embedded-opentype"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff2) format("woff2"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff) format("woff"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.ttf) format("truetype"), url("fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.svg#San Francisco Display Regular") format("svg")
+}
+
+@font-face {
+  font-family: "San Francisco Display Medium";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-medium-webfont.eot?#iefix) format("embedded-opentype"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-medium-webfont.woff2) format("woff2"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-medium-webfont.woff) format("woff"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-medium-webfont.ttf) format("truetype"), url("fonts/sanfrancisco/sanfranciscodisplay-medium-webfont.svg#San Francisco Display Medium") format("svg")
+}
+
+@font-face {
+  font-family: "San Francisco Display Semibold";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.eot?#iefix) format("embedded-opentype"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.woff2) format("woff2"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.woff) format("woff"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.ttf) format("truetype"), url("fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.svg#San Francisco Display Semibold") format("svg")
+}
+
+@font-face {
+  font-family: "San Francisco Display Bold";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.eot?#iefix) format("embedded-opentype"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff2) format("woff2"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff) format("woff"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.ttf) format("truetype"), url("fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.svg#San Francisco Display Bold") format("svg")
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+bold {
+  font-family: "San Francisco Display Medium";
+}
+
+body {
+  font-family: "San Francisco Display Thin";
+  line-height: 1.5;
+  font-size: 16px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+p {
+  color: #8A8A8A;
+  font-size: 17px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: lighter;
+  color: $grey-color;
+  // font-weight: lighter;
+}
+
+h2.mission {
+  font-style: italic;
+  line-height: 80px;
+}
+
+footer a {
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover,
+a:focus {
+  color: #ddd;
+  text-decoration: underline;
+}
+
+a:focus { outline: none; }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.logo {
+  margin-bottom: 1em;
+}
+
+.narrow-882 {
+  max-width: 882px;
+}
+
+.narrow-552 {
+  max-width: 552px;
+}
+
+span.color-pink-highlight {
+  color: #FF5E5E;
+}
+
+span.color-white-highlight {
+  color: #FFF;
+}
+
+.benefits-subtitle {
+  margin-left: 20px;
+}
+
+.benefits-explanation {
+  margin-left: 20px;
+}
+
+.benefits-row {margin-bottom: 1em;}
+
+.benefits-row img {width: 40px; height: auto;}
+
+.wistia-container {
+  margin: 0 auto;
+  min-width: 300px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+#video-section {
+  /*background-color: #FF5E5E;*/
+  display: block;
+  border-bottom: 1px solid #eee;
+}
+
+.wistia-container {
+  /*border-bottom: 1px solid #eee;*/
+}
+
+.mc-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.fb-invite-all img {
+  width: 400px;
+  margin: 0 auto;
+}
+
+#languages {
+  padding: 1em 0 1em 0;
+  background-color: #FF5E5E;
+}
+
+#languages h4 {
+  color: white;
+  margin-left: 10px;
+}
+
+.inline-block {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#share {
+  display: none;
+}
+
+.fa {
+  font-size: 40px !important
+}
+
+.fa-twitter {
+  color: #0084b4;
+}
+
+.fa-facebook {
+  color: #3b5998;
+}
+
+.fa-google-plus {
+  color: #d34836;
+}
+
+.fa-tumblr {
+  color: #36465d;
+}
+
+.fa-linkedin {
+  color: #4875B4;
+}
+
+.fa-reddit {
+  color: #ff5700;
+}
+
+.fa-envelope {
+  color: #000;
+}
+
+#icon-row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mb50 { margin-bottom: 50px !important; }
+.mb40 { margin-bottom: 40px !important ; }
+.mb30 { margin-bottom: 30px !important ; }
+.mb20 { margin-bottom: 20px !important ; }
+.mb10 { margin-bottom: 10px !important ; }
+.mt50 { margin-top: 50px !important ; }
+.mt40 { margin-top: 40px !important ; }
+.mt30 { margin-top: 30px !important ; }
+.mt20 { margin-top: 20px !important ; }
+.mt10 { margin-top: 10px !important ; }
+
+#apple {
+  opacity: .2
+}
+
+.row {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#video-embed-area {
+  width: 80%;
+  min-height: 200px;
+  border: 1px solid #eee;
+}
+
+#redirect-notice-container {
+  margin-bottom: 0;
+  border: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 20000;
+}
+
+#redirect-notice {
+  background-color: #1c73ba;
+  color: #fff;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  border-radius: 0;
+  button.close {
+    color: #fff;
+    opacity: 1;
+  }
+  border: none;
+}
+
+/* ==========================================================================
+   2.Hero section
+   ========================================================================== */
+
+.hero-section {
+  background: image-url("000_background@2x.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  padding: 0;
+  position: relative;
+  color: #fff;
+  min-height: 100%;
+
+  .phone-splash {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    margin: 0 auto;
+    z-index: 0;
+    img {
+      max-width: 350px;
+    }
+    z-index: 999;
+  }
+
+  height: 100%;
+  width: 100%;
+  display: table;
+
+  .earth-background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    z-index: 0;
+    img {
+      max-height: 150px;
+    }
+  }
+
+  h1,
+  h2,
+  h3
+  {
+    background-color: $grey-color;
+    position: relative;
+    z-index: 1000;
+    color: #fff;
+  }
+
+  #hero-logo {
+    width: 50px;
+  }
+}
+
+.hero-section::before,
+.video-tour::before,
+.pricing::before,
+.twitter-feed::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.store-logos {
+  position: relative;
+  z-index: 1000;
+  img {
+    width: 150px;
+  }
+}
+
+/*.hero-section::before { background: rgba(0, 0, 0, 0.3); }*/
+
+.welcome-message { padding-top: 2em; }
+
+.welcome-message h1 {
+  margin: 0 0 0.5em 0;
+}
+
+.welcome-message h2 {
+  margin: 0 0 0.5em 0;
+}
+
+.welcome-message h3 {
+  font-size: 20px;
+  margin: 0 0 0.5em 0;
+}
+
+.btn {
+  padding: 1em 1.5em;
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #f56363;
+  line-height: 1.5;
+  border: none;
+  border-radius: 3px;
+  /*text-transform: uppercase;*/
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: #bf0000;
+}
+
+.btn:active,
+.btn:focus,
+.btn:active:hover,
+.btn:active:focus {
+  color: #fff;
+  outline: none;
+  background-color: #fa5454;
+}
+
+.cta-btn p {
+  color: #fff;
+  margin: .75em 0 0;
+  font-size: 18px;
+}
+
+/* ==========================================================================
+   3.Navbar
+   ========================================================================== */
+
+.navbar-default {
+  border: none;
+  margin-bottom: 0;
+  border-radius: 0;
+  border-color: transparent;
+}
+
+.navbar-brand {
+  img {
+    padding-top: 2.5px;
+    width: 40px;
+  }
+}
+
+.nav > li { text-align: center; }
+.navbar-header {
+  .navbar-toggle {
+    .icon-bar {
+      background-color: #fff
+    }
+  }
+}
+
+.navbar-collapse {
+  .navbar-nav {
+    padding-top: 1em;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  li:first-child {
+  }
+}
+
+.navbar-default .navbar-nav > .active > a { font-weight: bold }
+.navbar-default .navbar-nav > li > a { color: #333 }
+.nav > li > a > i { padding-right: .2em; }
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #f56363;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.navbar-brand { padding: 0 2em 0 1em; }
+
+.navbar-default .navbar-collapse { border: 0px }
+
+
+/* ==========================================================================
+   4.Play button
+   ========================================================================== */
+
+
+.play-btn { margin: 2.25em 0; }
+
+.hero-section .play-btn img { transition: opacity 0.3s linear; }
+
+.play-btn img:hover { opacity: .8; }
+
+/* ==========================================================================
+   5.Featured on
+   ========================================================================== */
+
+
+
+.section-header { margin-bottom: 3em; }
+
+.section-header h2 {
+  font-size: 32px;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.section-header h3 {
+  font-size: 20px;
+  margin: 0;
+  color: #000;
+  line-height: 1.5em;
+}
+
+.features {
+  img {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  border-bottom: 1px solid #ddd;
+
+  .callout-section {
+    .callout {
+      height: 33%;
+      h4 {
+        font-family: "San Francisco Display Regular";
+      }
+      p {
+        font-size: 15px;
+      }
+    }
+
+    .callout-phone { display: none }
+
+    #callout1 h4 {
+      color: #FF5E5E;
+    }
+
+    #callout2 h4 {
+      color: #3396F3;
+    }
+
+    #callout3 h4 {
+      color: #ED70D7;
+    }
+
+    #callout4 h4 {
+      color: #A279FC;
+    }
+
+    #callout5 h4 {
+      color: #1FC433;
+    }
+
+    #callout6 h4 {
+      color: #FF8D35;
+    }
+  }
+}
+
+
+
+.featured-on,
+.features,
+.tour { background-color: #fff }
+.site-footer {
+  background-color: $light-grey-color;
+  h4, p, li {
+    color: #fff
+  }
+
+  h4 {
+    font-family: "San Francisco Display Regular"
+  }
+}
+
+.section-spacing,
+.section-spacing.featured-on,
+.section-spacing.tour,
+.section-spacing.site-footer { padding: 3.75em 0; }
+
+.featured-on .section-header { margin-bottom: 1.5em; }
+
+.featured-sites li { padding: 0 3em 1.5em; }
+
+.featured-sites li:last-child { padding-bottom: 0; }
+
+.featured-sites img {
+  opacity: .15;
+  transition: all 0.5s linear
+}
+
+.featured-sites img:hover { opacity: .2; }
+
+#feature2 {
+  img {
+   width: 200px;
+  }
+}
+
+/* ==========================================================================
+   6.Benefits
+   ========================================================================== */
+
+
+
+.benefits img { margin-bottom: .75em; }
+
+.benefits p { color: #8A8A8A; }
+
+.benefits div[class^="col-"]:nth-child(1),
+.benefits div[class^="col-"]:nth-child(2),
+.reviews div[class^="col-"]:nth-child(1),
+.reviews div[class^="col-"]:nth-child(2),
+.team div[class^="col-"]:nth-child(1),
+.team div[class^="col-"]:nth-child(2) { padding-bottom: 1.5em; }
+
+.benefits div[class^="col-"] > p:last-child { margin-bottom: 0; }
+
+/* ==========================================================================
+   7.Features
+   ========================================================================== */
+
+.features { overflow-x: hidden; }
+
+.features div[class="row"]:nth-child(1),
+.features div[class="row"]:nth-child(2) { /*margin-bottom: 3em;*/ }
+
+.features article { margin-top: 1.5em; }
+
+.features article h2 {
+  font-size: 24px;
+  margin: 24px 0 12px;
+}
+
+.features article li {
+  font-size: 17px;
+  color: #8A8A8A;
+  padding-left: 1em;
+  text-indent: -.7em;
+  padding-bottom: .2em;
+}
+
+.features article li:last-child { padding-bottom: 0; }
+
+.features article li:before {
+  content: "• ";
+  color: #f56363;
+  padding-right: .5em;
+}
+
+.features div[class="row"]:nth-child(3) .col-md-4 article { margin-bottom: 1.5em; }
+
+/* ==========================================================================
+   8.video tour
+   ========================================================================== */
+
+.video-tour {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  background: #333 url(../img/bg-video-preview.jpg) center center no-repeat scroll;
+  background-size: cover;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+.video-tour::before {
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.video-tour h2 {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+#bgvid {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.video-tour .play-btn {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  margin: 0;
+}
+
+/* ==========================================================================
+   9.tour
+   ========================================================================== */
+
+.center-block { float: none; }
+
+.tour h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.tour .btn {
+  margin-top: 1em;
+  vertical-align: initial;
+}
+
+.tour .btn i,
+.sub-form .btn i { padding-left: .5em; }
+
+/* ==========================================================================
+   10.Pricing
+   ========================================================================== */
+
+.pricing {
+  background: url(../img/bg-pricing.jpg) center center no-repeat scroll;
+  background-size: cover;
+  position: relative;
+}
+
+.pricing::before { background: rgba(0, 0, 0, 0.30); }
+
+.pricing .section-header h2,
+.pricing .section-header h3 {
+  position: relative;
+  color: #fff;
+}
+
+.plan {
+  background-color: #fff;
+  width: 350px;
+  display: inline-block;
+  margin: 0 0 1.5em;
+  max-width: 100%;
+}
+
+.plan:last-child { margin-bottom: 0; }
+
+.plan .header,
+.price,
+.plan-features { padding: 1.5em 1em; }
+
+.plan .header h4 {
+  font-size: 21px;
+  margin: 0;
+}
+
+.price {
+  background-color: #43c5b8;
+  color: #fff;
+}
+
+.price-amount {
+  font-size: 110px;
+  line-height: 1;
+}
+
+.period { font-size: 30px; }
+
+.currency {
+  font-size: 30px;
+  vertical-align: top;
+  top: 30px;
+}
+
+.plan-features li {
+  padding-bottom: .75em;
+  font-size: 17px;
+}
+
+.plan-features li:last-child { padding-bottom: 0; }
+
+.plan-features li i {
+  padding-left: .5em;
+  color: #f56363;
+}
+
+.buy-button { padding-bottom: 1.5em; }
+
+.buy-button p {
+  margin: 12px 0 0;
+}
+
+/* ==========================================================================
+  11.reviews
+   ========================================================================== */
+
+.reviews figure { margin-bottom: 1.5em; }
+
+blockquote {
+  padding: 0 0 0 3em;
+  margin: 0;
+  border-left: none;
+  position: relative;
+  font-style: italic;
+  font-size: 25px;
+}
+
+blockquote::before {
+  content: "\201C";
+  color: #e9e9e9;
+  position: absolute;
+  font-size: 100px;
+}
+
+blockquote::after {
+  content: "\201C";
+  color: #e9e9e9;
+  position: absolute;
+  font-size: 100px;
+}
+
+blockquote p {
+  font-size: 18px;
+}
+
+blockquote cite {
+  font-size: 17.5px;
+  color: #AEAFAF;
+  font-style: normal;
+}
+
+/* ==========================================================================
+  12.cta section
+   ========================================================================== */
+
+.cta-section { background-color: #f56363; }
+
+.cta-section .section-header { margin-bottom: 2.25em; }
+
+.cta-section h2 {
+  font-size: 40px;
+  color: #fff;
+}
+
+.cta-section .section-header h3 {
+  font-size: 24px;
+  color: #fff;
+}
+
+.cta-section .btn {
+  background-color: #fff;
+  color: #f56363;
+  border: 1px solid transparent;
+}
+
+.cta-section .btn:hover {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.cta-section p {
+  color: #fff;
+  margin: .75em 0 0;
+}
+
+.cta-section a[href^="tel"] { color: #fff; }
+
+.cta-section a[href^="tel"]:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   13.Team
+   ========================================================================== */
+
+
+
+.team h4 {
+  font-size: 21px;
+  margin: 24px 0 6px;
+}
+
+.team h5 {
+  font-size: 19px;
+  margin-top: 0;
+}
+
+.team div[class^="col-"]:nth-child(3) .team-info h5 { margin: 0; }
+
+/*.team p { color: #fff; }*/
+
+.team img {
+  border-radius: 10px;
+}
+
+.team-details figure {
+  position: relative;
+  overflow: hidden;
+  width: 360px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.team-details figcaption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(245, 99, 99, 0.95);
+  transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+  -webkit-transform: translate3d(0, 100%, 0);
+  -ms-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+  padding: 1.5em 1em;
+  display: block;
+}
+
+.team-details figure figcaption div p,
+.team-details figure figcaption div li a {
+  transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+  -webkit-transform: translate3d(0, 200%, 0);
+  -ms-transform: translate3d(0, 200%, 0);
+  transform: translate3d(0, 200%, 0);
+}
+
+.team-details figure:hover figcaption,
+.team-details figure:hover figcaption div p,
+.team-details figure:hover figcaption div li a {
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.team-details figure figcaption div p { transition-delay: 0.05s; }
+
+.team-details figure figcaption div li:nth-child(1) a { transition-delay: 0.1s; }
+
+.team-details figure figcaption div li:nth-child(2) a { transition-delay: 0.15s; }
+
+.team-details .social { margin-top: .75em; }
+
+.team-details .social li a {
+  color: #f56363;
+  background-color: #fff;
+  border: 1px solid #f56363;
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+  font-size: 1.5em;
+}
+
+.team-details .social li a:hover {
+  color: #fff;
+  background-color: #f56363;
+  border: 1px solid #fff;
+}
+
+.team-details figcaption div {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  padding: 1.5em;
+}
+
+/* ==========================================================================
+   14.Twitter feed
+   ========================================================================== */
+
+.twitter-feed {
+  background: url(../img/bg-twitter.jpg) center center no-repeat scroll;
+  background-size: cover;
+  position: relative;
+}
+
+.twitter-feed::before { background: rgba(0, 0, 0, 0.38); }
+
+.twitter-icon .fa-twitter {
+  color: #fff;
+  font-size: 4em;
+  padding-bottom: 12px;
+}
+
+.tweet {
+  font-size: 20px;
+  color: #fff;
+}
+
+.tweet a { color: #fff; }
+
+.tweet a:hover { color: rgba(255, 255, 255, 0.92); }
+
+/* ==========================================================================
+   15.Contact us
+   ========================================================================== */
+
+.contact.section-spacing { padding: 3.75em 0 0; }
+
+#map-canvas {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  height: 35em;
+}
+
+#map-canvas img { max-width: none; }
+
+.map-info-box { text-align: left; }
+
+.map-info-box p { margin: 0 0 8px; }
+
+.map-info-box i {
+  padding-right: .5em;
+  color: #CEC9C9;
+}
+
+.map-head h3 {
+  height: 30px;
+  background: url(../img/logo-nav.png) 47px center no-repeat;
+  background-size: 110px auto;
+  text-indent: -999em;
+  margin: 12px 0 14px;
+}
+
+/* ==========================================================================
+   16.Subscription form styles
+   ========================================================================== */
+
+
+ .form-control::-webkit-input-placeholder {
+ color: #8A8A8A;
+}
+ .form-control:-moz-placeholder {
+ color: #8A8A8A;
+}
+ .form-control::-moz-placeholder {
+ color: #8A8A8A;
+}
+ .form-control:-ms-input-placeholder {
+ color: #8A8A8A;
+}
+.form-area {
+  margin-top: 1em;
+  padding-top: 2em;
+  padding-bottom: 1em;
+/*  box-shadow: 0px 3px 4px #ddd;*/
+  border-radius: 4px;
+}
+
+.form-area-bottom {
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+}
+
+.form-area p {
+  color: #fff;
+  font-size: 15px;
+}
+
+.form-area h4 {
+  color: #fff;
+  margin-top: 0;
+}
+
+.mc-form {
+    margin-top: 1.5em;
+    opacity: 1;
+}
+
+.form-control {
+  background-color: #fff;
+  color: #8A8A8A;
+  box-shadow: none;
+  height: 50px;
+  font-size: 15px;
+  padding: 0 1.5em;
+}
+
+.form-control:focus {
+  border-color: #fa5454;
+  outline: 0;
+  box-shadow: none;
+}
+
+.sub-form .btn { padding: 1em; }
+
+.form-area .btn-default {
+  height: 50px;
+  margin-left: 1em !important;
+  border-radius: 4px !important;
+}
+
+.input-group .form-control:first-child {
+  border-radius: 4px;
+}
+
+.mc-notification {
+  margin: 0.75em 0 0;
+  color: #8A8A8A;
+  font-size: 17px;
+}
+
+.error { color: #FF4C4C !important; }
+
+.valid { color: #4CAF50 !important; }
+
+.error i,
+.valid i { padding-right: .5em; }
+
+/* ==========================================================================
+   17.site footer
+   ========================================================================== */
+
+
+
+.site-footer small { display: inline-block; }
+
+.footer-links,
+.site-footer small { margin: 0 0 .75em; }
+
+.site-footer small,
+.footer-links a {
+  color: #8A8A8A;
+  font-size: 18px;
+}
+
+.footer-links a:hover { color: #fa5454; }
+
+.footer-links a:first-child { padding-right: .4em; }
+
+/* ==========================================================================
+   18.Social
+   ========================================================================== */
+
+
+.social li {
+  display: inline-block;
+  padding-right: .5em;
+  text-align: center;
+}
+
+.social li:last-child { padding-right: 0; }
+
+.social li a {
+  display: block;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  color: #fff;
+  border-radius: 50%;
+  position: relative;
+  transition: all .8s ease;
+  font-size: 1.3em;
+  background: #D6D6D6;
+}
+
+.social li a:hover {
+  color: #fff;
+  background: #f56363;
+}
+
+/* ==========================================================================
+   Language switcher
+   ========================================================================== */
+
+.language-switcher {
+  right: 80px;
+  top: 96px;
+  z-index: 10;
+  position: absolute;
+}
+
+.language-switcher .btn {
+  font-size: 15px;
+  text-transform: none;
+  padding: 0;
+  line-height: 0;
+}
+
+.language-switcher .btn,
+.language-switcher .btn:hover,
+.language-switcher.open>.dropdown-toggle.btn-default:hover,
+.language-switcher.open>.dropdown-toggle.btn-default,
+.language-switcher .btn:active,
+.language-switcher .btn:focus,
+.language-switcher .btn:active:hover,
+.language-switcher .btn:active:focus,
+.language-switcher.open>.dropdown-toggle.btn-default:focus {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: #fff;
+}
+
+.language-switcher .dropdown-menu a img,
+.language-switcher .btn img { padding-right: 3px; }
+
+.language-switcher .dropdown-menu { top: 126%; }
+
+/* ==========================================================================
+   19.Small devices (tablets, 768px and up)
+   ========================================================================== */
+
+@media (min-width: 768px) {
+
+.hero-section {
+  .earth-background {
+    img {
+      max-width: 700px;
+    }
+  }
+
+  .phone-splash {
+    img {
+      max-width: 350px;
+    }
+  }
+}
+
+.navbar-collapse {
+  .navbar-nav {
+    padding-top: 0em;
+  }
+}
+
+#app-cover {
+  margin-top: 2em;
+}
+
+#share {
+  display: block;
+}
+
+.features .callout-section {
+  .callout-phone { display: block }
+}
+
+
+/*.welcome-message { margin-top: 8.25em; }
+
+.welcome-message h1 { font-size: 44px; }
+
+.welcome-message h2 { font-size: 23px; }*/
+
+.featured-sites li {
+  padding: 0 1em;
+  display: inline-block;
+}
+
+/*.section-spacing { padding: 4.5em 0; }*/
+
+.contact.section-spacing { padding: 4.5em 0 0; }
+
+/*.section-header h3 { font-size: 26px; }*/
+
+.benefits div[class^="col-"]:nth-child(1),
+.benefits div[class^="col-"]:nth-child(2),
+.reviews div[class^="col-"]:nth-child(1),
+.reviews div[class^="col-"]:nth-child(2),
+.team div[class^="col-"]:nth-child(1),
+.team div[class^="col-"]:nth-child(2) { padding-bottom: 0; }
+
+.tour .btn { margin: 0 0 0 1em; }
+
+.video-tour { height: 450px; }
+
+.plan {
+  width: 325px;
+  margin: 0 1em 0;
+}
+
+blockquote { padding: 0 0 0 1em; }
+
+blockquote::before {
+  left: -18px;
+  top: -30px;
+  font-size: 80px;
+}
+
+.cta-section h2 { font-size: 46px; }
+
+.team h5 { margin: 0 !important; }
+
+.tweet { font-size: 23px; }
+
+.sub-form .btn { /*padding: 1em 2em;*/ }
+
+.language-switcher { right: 80px; }
+
+.benefits-row {margin-bottom: 2em;}
+
+}
+
+/* ==========================================================================
+   20.Medium devices (desktops, 992px and up)
+   ========================================================================== */
+
+@media (min-width: 992px) {
+
+  .hero-section {
+    .earth-background {
+      img {
+        max-width: 900px;
+      }
+    }
+
+    .phone-splash {
+      img {
+        width: 380px;
+      }
+    }
+  }
+
+  .icon {
+    text-align: right;
+  }
+
+/*.welcome-message { margin-top: 7.5em; }
+
+.welcome-message h1 { font-size: 56px; }
+
+.welcome-message h2 { font-size: 24px; }*/
+
+.play-btn { margin: 4.5em 0; }
+
+/*.section-spacing { padding: 6em 0; }*/
+
+.contact.section-spacing { padding: 6em 0 0; }
+
+.features div[class="row"]:nth-child(1),
+.features div[class="row"]:nth-child(2) { /*margin-bottom: 7.5em;*/ }
+
+.features article { margin-top: 3em; }
+
+.features img {
+  max-width: 80%;
+}
+
+.features div[class="row"]:nth-child(2) .col-md-7 img { left: -277px; }
+
+.featured-sites li { padding: 0 3em; }
+
+.video-tour {
+  height: 600px;
+  background: none;
+}
+
+.video-tour::before { background: rgba(0, 0, 0, 0.1); }
+
+#bgvid { display: block; }
+
+.plan {
+  margin: 0 1.5em 0;
+  width: 350px;
+}
+
+blockquote { padding: 0 0 0 3em; }
+
+blockquote::before {
+  left: -5px;
+  top: -50px;
+  font-size: 128px;
+}
+
+.footer-links,
+.site-footer small { margin: 0; }
+
+.section-spacing.site-footer { padding: 3em 0; }
+
+.language-switcher { top: 10px; }
+
+.benefits-row {margin-bottom: 2em;}
+
+}
+
+@media (max-width: 768px) {
+  .video-tour .play-btn img { width: 45%; }
+  .features {
+    img {
+      max-width: 200px;
+    }
+  }
+
+  hr.hidden {
+    display: block !important;
+  }
+
+  div.skill, div.benefit, div.team {
+    margin-bottom: 50px;
+    &:last-child {
+      margin-bottom: 0px;
+    }
+  }
+}
+
+@media (min-width: 1300px) {
+  .hero-section {
+    .phone-splash {
+      img {
+        width: 500px;
+      }
+    }
+  }
+}

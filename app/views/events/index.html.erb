@@ -1,0 +1,27 @@
+<!--hero section-->
+<% provide(:title, 'Reactions') %>
+
+<div class="features" id="feature2">
+  <p class="text-center mt10">REACTIONS</p>
+</div>
+
+
+<div class="features section-spacing" id="feature2">
+ <div class="container narrow-882 text-center">
+
+   <% @events.each_with_index do |event, index| %>
+     <% if index % 3 == 0 %>
+     <div class="row text-center mt40">
+      <% end %>
+
+   <div class="col-sm-4 benefit">
+     <!-- <%= image_tag(event.img_url) %> -->
+     <%= link_to image_tag(event.img_url), event_path(event) %>
+     <!-- <h4><%= event.name %></h4> -->
+   </div>
+
+     <% if index % 3 == 2 %>
+       </div>
+    <% end %>
+   <% end %>
+</div>
