@@ -11,19 +11,23 @@
   "clusters":
   [
     {
-      "id": 0,
-      "num_tweets": 25,
+      "id": 5,
+      "num_tweets": 100,
       "num_users": 90,
+      "num_retweets": 200,
+      "num_favorites": 150,
       "sentiment_score": 0.50,
-      "tweets_id": [1,2,3,4],
+      "tweets_id": ["956320022871199744", "541278904204668929"],
       "topics": ["racist", "offensive", "dumb"]
     },
     {
-      "id": 1,
+      "id": 2,
       "num_tweets": 100,
       "num_users": 90,
+      "num_retweets": 200,
+      "num_favorites": 150,
       "sentiment_score": -0.75,
-      "tweets_id": [1,2,3,4],
+      "tweets_id": ["541278904204668929"],
       "topics": ["thank you", "women", "gender gap"]
     }
   ]

@@ -1,72 +1,107 @@
+
 <div class="features section-spacing">
   <div class="container narrow-882 text-center">
-    <canvas id="myChart" width="200" height="200"></canvas>
-    <script>
-    var ctx = document.getElementById("myChart").getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bubble',
-        data: {
-          labels: "Africa",
-          datasets: [
-            {
-              label: ["China"],
-              backgroundColor: "rgba(255,221,50,0.2)",
-              borderColor: "rgba(255,221,50,1)",
-              data: [{
-                x: 21269017,
-                y: 5.245,
-                r: 15
-              }]
-            }, {
-              label: ["Denmark"],
-              backgroundColor: "rgba(60,186,159,0.2)",
-              borderColor: "rgba(60,186,159,1)",
-              data: [{
-                x: 258702,
-                y: 7.526,
-                r: 10
-              }]
-            }, {
-              label: ["Germany"],
-              backgroundColor: "rgba(0,0,0,0.2)",
-              borderColor: "#000",
-              data: [{
-                x: 3979083,
-                y: 6.994,
-                r: 15
-              }]
-            }, {
-              label: ["Japan"],
-              backgroundColor: "rgba(193,46,12,0.2)",
-              borderColor: "rgba(193,46,12,1)",
-              data: [{
-                x: 4931877,
-                y: 5.921,
-                r: 50
-              }]
-            }
-          ]
-        },
-        options: {
-          title: {
-            display: true,
-            text: 'Predicted world population (millions) in 2050'
-          }, scales: {
-            yAxes: [{
-              scaleLabel: {
-                display: true,
-                labelString: "Happiness"
+    <div class="row">
+      <div class="col-sm-4 summarystats">
+        <div class="content">
+          <h4>Average Sentiment</h4>
+          <h2><%= @sentiment_score %></h2>
+        </div>
+      </div>
+
+      <div class="col-sm-4 summarystats">
+        <div class="content">
+          <h4>Number of Tweets</h4>
+          <h2><%= @num_tweets %></h2>
+        </div>
+      </div>
+
+      <div class="col-sm-4 summarystats">
+        <div class="content">
+          <h4>Number of Retweets</h4>
+          <h2><%= @num_retweets %></h2>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row mt40">
+      <div class="col-sm-8">
+          <canvas id="myChart" width="200" height="350"></canvas>
+          <script>
+          var ctx = document.getElementById("myChart").getContext('2d');
+          var data_points = <%=raw @clusters_data.to_json %>;
+          var myChart = new Chart(ctx, {
+              type: 'bubble',
+              data: {
+                datasets: data_points
+              },
+              options: {
+                legend: {
+                    display: false
+                 },
+                title: {
+                  display: true,
+                  text: 'Tweets clusters'
+                },
+                scales: {
+                  yAxes: [{
+                    scaleLabel: {
+                      display: false,
+                      labelString: "Sentiment"
+                    },
+                    ticks: {
+                      display: false
+                    }
+                  }],
+                  xAxes: [{
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Sentiment"
+                    }
+                  }]
+                },
+                responsive: true,
+                maintainAspectRatio: false,
+                onClick: function(e) {
+                    var elements = this.getElementAtEvent(e);
+
+
+                    // If you click on at least 1 elements ...
+                    if (elements.length > 0) {
+                        // Logs it
+                        // Here we get the data linked to the clicked bubble ...
+                        element = elements[0]
+                        console.log(element);
+                        element.custom = element.custom || {};
+                        element.custom.backgroundColor = "#333333";
+
+                        var datasetID = this.config.data.datasets[elements[0]._datasetIndex].id;
+                        // data gives you `x`, `y` and `r` values
+                        // var data = this.config.data.datasets[elements[0]._datasetIndex].data[elements[0]._index];
+
+                        var cluster_divs = $(document.querySelectorAll("[data-tag]"))
+                        cluster_divs.each(function(){
+                            $(this).addClass('hidden');
+                            if ($(this).data('tag') == datasetID) {
+                              $(this).removeClass('hidden')
+                            }
+                        })
+                    }
+                }
               }
-            }],
-            xAxes: [{
-              scaleLabel: {
-                display: true,
-                labelString: "GDP (PPP)"
-              }
-            }]
-          }
-        }
-    });
-    </script>
+          });
+          </script>
+      </div>
+
+      <% @clusters.each do |cluster| %>
+        <div class="col-sm-4 chart pre-scrollable cluster-data hidden" data-tag=<%= cluster['id'] %> >
+          <% @tweets[cluster['id']].each do |tweet|  %>
+            <%= raw(tweet.html) %>
+          <% end %>
+        </div>
+      <% end %>
+
+    </div>
   </div>
 </div>

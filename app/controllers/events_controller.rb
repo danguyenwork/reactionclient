@@ -8,7 +8,6 @@ class EventsController < ApplicationController
   end
 
   # GET /events/1
-  # GET /events/1.json
   def show
     @data = JSON.parse(File.read("#{Rails.root}/public/test.json"))
     @keyword = @data['keyword']
@@ -17,6 +16,30 @@ class EventsController < ApplicationController
     @end_date = @data['end_date']
     @sentiment_score = @data['sentiment_score']
     @clusters = @data['clusters']
+    @num_tweets = @data['num_tweets']
+    @num_retweets = @data['num_retweets']
+  
+
+    @clusters_data = []
+    @tweets = {}
+
+    @currently_selected_cluster_id = @clusters[0]['id']
+
+    @clusters.each_with_index do |cluster|
+      chart_data = {
+        id: cluster['id'],
+        backgroundColor: "rgba(255,221,50,0.2)",
+        borderColor: "rgba(255,221,50,1)",
+        data: [{
+            x: cluster['sentiment_score'],
+            y: 2,
+            r: cluster['num_tweets'] / @num_tweets * 10
+        }]
+      }
+      tweets_data = $tc.oembeds(cluster['tweets_id'])
+      @clusters_data.append(chart_data)
+      @tweets[cluster['id']] = tweets_data
+    end
   end
 
   # GET /events/new
