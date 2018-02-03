@@ -18,20 +18,55 @@
 //= require Chart.min
 
 $(document).ready(function() {
+    Chart.defaults.global.legend.display = false;
+    
     // Call ajax to get the data for the chart
     var getRemoteData = function() {
         $.ajax({
             url: "/test.json",
         }).success(function(data) {
             updateSummaryStats(data);
+            updateBubbleChart(data);
         }).fail(function(data) {
         });
     };
 
+    // Update summary statistic boxes
     var updateSummaryStats = function(data) {
         $("#sentiment_score").text(data.sentiment_score);
         $("#num_tweets").text(data.num_tweets);
         $("#num_retweets").text(data.num_retweets);
+    }
+
+    // Update bubble chart
+    var updateBubbleChart = function(data) {
+        var ctx = document.getElementById('myChart');
+        ctx.width = 200;
+        ctx.height = 350;
+
+        var chart = new Chart(ctx, {
+            type: 'bubble',
+            data: {
+                datasets: [
+                    {
+                        data: [{x: 1, y: 0.50, r: 30}],
+                        backgroundColor: 'rgba(250, 55, 55, 0.5)'
+                    },
+                    {
+                        data: [{x: 1, y: -0.75, r: 50}],
+                        backgroundColor: 'rgba(63, 255, 63, 0.5)'
+                    }
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    xAxes: [{
+                        display: false
+                    }]
+                }
+            }
+        });
     }
 
     getRemoteData();

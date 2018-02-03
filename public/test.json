@@ -22,7 +22,7 @@
     },
     {
       "id": 2,
-      "num_tweets": 100,
+      "num_tweets": 300,
       "num_users": 90,
       "num_retweets": 200,
       "num_favorites": 150,
