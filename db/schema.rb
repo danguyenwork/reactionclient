@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20180124175223) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.string   "img_url"
+    t.string   "db_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

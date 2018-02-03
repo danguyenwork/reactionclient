@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
+  URL = 'http://ec2-35-164-197-212.us-west-2.compute.amazonaws.com:5000/events:'
+
   # GET /events
   # GET /events.json
   def index
@@ -9,7 +11,8 @@ class EventsController < ApplicationController
 
   # GET /events/1
   def show
-    @data = JSON.parse(File.read("#{Rails.root}/public/test.json"))
+    @data = JSON.parse(RestClient.get(URL + 'Apple').body)
+
     @keyword = @data['keyword']
     @hashtag = @data['hashtag']
     @start_date = @data['start_date']
@@ -18,7 +21,7 @@ class EventsController < ApplicationController
     @clusters = @data['clusters']
     @num_tweets = @data['num_tweets']
     @num_retweets = @data['num_retweets']
-  
+
 
     @clusters_data = []
     @tweets = {}

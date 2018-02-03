@@ -8,5 +8,5 @@ img_name = ["stella_artois.png", "bud_light.png", "michelob_ultra.png", "budweis
 
 
 brands.each_with_index  {|brand, index|
-  Event.create(name: brand, keywords: search[index], img_url: img_name[index])
+  Event.create(name: brand, keywords: search[index], img_url: img_name[index], db_name: img_name[index].gsub('.png', ''))
 }
