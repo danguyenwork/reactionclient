@@ -40,21 +40,25 @@ $(document).ready(function() {
 
     // Update bubble chart
     var updateBubbleChart = function(data) {
-        var ctx = document.getElementById('myChart');
+        var ctx = document.getElementById('myChart').getContext("2d");
         ctx.width = 200;
-        ctx.height = 350;
+        ctx.height = 460;
 
         var chart = new Chart(ctx, {
             type: 'bubble',
             data: {
                 datasets: [
                     {
+                        id: 5,
                         data: [{x: 1, y: 0.50, r: 30}],
-                        backgroundColor: 'rgba(250, 55, 55, 0.5)'
+                        backgroundColor: '#8BC34A',
+                        borderColor: false
                     },
                     {
+                        id: 2,
                         data: [{x: 1, y: -0.75, r: 50}],
-                        backgroundColor: 'rgba(63, 255, 63, 0.5)'
+                        backgroundColor: '#f44336',
+                        borderColor: false
                     }
                 ]
             },
@@ -63,10 +67,43 @@ $(document).ready(function() {
                 scales: {
                     xAxes: [{
                         display: false
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
                     }]
+                },
+                responsive: true,
+                onClick: function(e) {
+                    var elements = this.getElementAtEvent(e);
+                    // If you click on at least 1 elements ...
+                    if (elements.length > 0) {
+                        // Logs it
+                        // Here we get the data linked to the clicked bubble ...
+                        element = elements[0]
+                        // console.log(element);
+                        element.custom = element.custom || {};
+                        element.custom.backgroundColor = "#333333";
+                        var datasetID = this.config.data.datasets[elements[0]._datasetIndex].id;
+                        // data gives you `x`, `y` and `r` values
+                        // var data = this.config.data.datasets[elements[0]._datasetIndex].data[elements[0]._index];
+                        var cluster_divs = $(document.querySelectorAll("[data-tag]"));
+                        cluster_divs.each(function(){
+                            $(this).addClass('hidden');
+                            if ($(this).data('tag') == datasetID) {
+                              $(this).removeClass('hidden')
+                            }
+                        })
+                    }
                 }
-            }
+            },
         });
+    }
+
+    // Generate the data points for the chart
+    var generateData = function(data) {
+        const a = 1;
     }
 
     getRemoteData();
