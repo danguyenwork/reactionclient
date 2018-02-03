@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 
   # GET /events/1
   def show
-    @data = JSON.parse(File.read("#{Rails.root}/public/test.json"))
+    @data = JSON.parse(RestClient.get(URL + @event.db_name).body)
     @keyword = @data['keyword']
     @hashtag = @data['hashtag']
     @start_date = @data['start_date']
@@ -18,7 +18,7 @@ class EventsController < ApplicationController
     @clusters = @data['clusters']
     @num_tweets = @data['num_tweets']
     @num_retweets = @data['num_retweets']
-  
+
 
     @clusters_data = []
     @tweets = {}
