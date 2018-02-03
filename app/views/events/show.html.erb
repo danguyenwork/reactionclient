@@ -31,6 +31,18 @@
           <script>
           var ctx = document.getElementById("myChart").getContext('2d');
           var data_points = <%=raw @clusters_data.to_json %>;
+
+          var colors = ["#E53935", "#D25030", "#C0672C", "#AD7F28", "#88AE1F", "#76C51B", "#64DD17"];
+
+          data_points.forEach(function(el, indx) {
+            if (el.data[0].y < 0) {
+              var colors_reverse = colors.reverse();
+              el.backgroundColor = colors_reverse[indx];
+            } else {
+              el.backgroundColor = colors[indx];
+            }
+          });
+
           var myChart = new Chart(ctx, {
               type: 'bubble',
               data: {
@@ -47,26 +59,21 @@
                 scales: {
                   yAxes: [{
                     scaleLabel: {
-                      display: false,
+                      display: true,
                       labelString: "Sentiment"
                     },
                     ticks: {
-                      display: false
+                      display: true
                     }
                   }],
                   xAxes: [{
-                    scaleLabel: {
-                      display: true,
-                      labelString: "Sentiment"
-                    }
+                    display: false
                   }]
                 },
                 responsive: true,
                 maintainAspectRatio: false,
                 onClick: function(e) {
                     var elements = this.getElementAtEvent(e);
-
-
                     // If you click on at least 1 elements ...
                     if (elements.length > 0) {
                         // Logs it

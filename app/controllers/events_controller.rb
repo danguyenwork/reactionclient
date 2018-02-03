@@ -29,11 +29,11 @@ class EventsController < ApplicationController
       chart_data = {
         id: cluster['id'],
         backgroundColor: "rgba(255,221,50,0.2)",
-        borderColor: "rgba(255,221,50,1)",
+        # borderColor: "rgba(255,221,50,1)",
         data: [{
-            x: cluster['sentiment_score'],
-            y: 2,
-            r: cluster['num_tweets'] / @num_tweets * 10
+            x: 1,
+            y: cluster['sentiment_score'],
+            r: cluster['num_retweets'] / @num_tweets * 10
         }]
       }
       tweets_data = $tc.oembeds(cluster['tweets_id'])
