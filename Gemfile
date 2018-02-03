@@ -37,7 +37,6 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'rest-client', '~> 2.0'
 gem 'chart-js-rails'
-gem 'rainbowvis_rails'
 
 
 group :development, :test do

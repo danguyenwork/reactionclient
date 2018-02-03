@@ -35,7 +35,7 @@
           var colors = ["#E53935", "#D25030", "#C0672C", "#AD7F28", "#88AE1F", "#76C51B", "#64DD17"];
 
           data_points.forEach(function(el, indx) {
-            if (el.data[0].y < 0) {
+            if (el.data[0].y > 0) {
               var colors_reverse = colors.reverse();
               el.backgroundColor = colors_reverse[indx];
             } else {
@@ -53,17 +53,17 @@
                     display: false
                  },
                 title: {
-                  display: true,
+                  display: false,
                   text: 'Tweets clusters'
                 },
                 scales: {
                   yAxes: [{
                     scaleLabel: {
-                      display: true,
+                      display: false,
                       labelString: "Sentiment"
                     },
                     ticks: {
-                      display: true
+                      display: false
                     }
                   }],
                   xAxes: [{
