@@ -11,14 +11,15 @@ class EventsController < ApplicationController
 
   # GET /events/1
   def show
-    @data = JSON.parse(File.read("#{Rails.root}/public/test.json"))
-    # @data = JSON.parse(RestClient.get(URL + @event.db_name).body)
+    # @data = JSON.parse(File.read("#{Rails.root}/public/test.json"))
+    @data = JSON.parse(RestClient.get(URL + @event.db_name).body)
 
     @keyword = @data['keyword']
     @hashtag = @data['hashtag']
     @start_date = @data['start_date']
     @end_date = @data['end_date']
-    @sentiment_score = (@data['sentiment_score'] * 100).round
+
+    @sentiment_score = (@data['toral_avg_sentiment_score'] * 100).round
 
     if @sentiment_score <= -50
       @average_sentiment = 'negative'
@@ -29,8 +30,8 @@ class EventsController < ApplicationController
     end
 
     @clusters = @data['clusters']
-    @num_tweets = @data['num_tweets']
-    @num_retweets = @data['num_retweets']
+    @num_tweets = @data['total_num_tweets']
+    @num_retweets = @data['total_retweet_cnt']
 
     @tweets_cnt = [@data["neg_tweets_cnt"], @data["neutral_tweets_cnt"], @data["pos_tweet_count"] ]
 
@@ -47,11 +48,15 @@ class EventsController < ApplicationController
         # borderColor: "rgba(255,221,50,1)",
         data: [{
             x: 1,
-            y: cluster['sentiment_score'],
-            r: cluster['num_retweets'] / @num_tweets * 10
+            y: cluster['senti_score'],
+            r: cluster['num_tweets'] / 10
         }]
       }
-      tweets_data = $tc.oembeds(cluster['tweets_id'])
+
+      int_array = cluster['tweet_ids'].map(&:to_i)
+      puts(int_array)
+      puts("--")
+      tweets_data = $tc.oembeds([int_array[0]])
       @clusters_data.append(chart_data)
       @tweets[cluster['id']] = tweets_data
     end

@@ -156,7 +156,7 @@
                       <div class="col-sm-4 summarystats">
                         <div class="content" id="sentiment">
                           <h4>Cluster Sentiment</h4>
-                          <span style="color: red">< -100</span><span style="font-size: 30px;padding-left:20px;padding-right:20px;margin-bottom:10px"><%= (cluster['sentiment_score'] * 100).round %></span><span style="color: green">100 ></span>
+                          <span style="color: red">< -100</span><span style="font-size: 30px;padding-left:20px;padding-right:20px;margin-bottom:10px"><%= (cluster['senti_score'] * 100).round %></span><span style="color: green">100 ></span>
                         </div>
                       </div>
 
@@ -170,7 +170,7 @@
                       <div class="col-sm-4 summarystats">
                         <div class="content" id="num_retweet">
                           <h4>Cluster Retweets</h4>
-                          <span style="font-size:30px"><%= cluster['num_retweets'] %></span>
+                          <span style="font-size:30px"><%= cluster['num_retweet'] %></span>
                         </div>
                       </div>
                     </div>
