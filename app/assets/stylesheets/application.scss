@@ -2,6 +2,10 @@
 @import "bootstrap";
 @import "base.scss";
 
+#chart-container {
+  min-height: 500px;
+}
+
 .summarystats {
     .content {
         border: none;
@@ -9,16 +13,20 @@
         padding-top: 10px;
         padding-bottom: 10px;
 
-        &#sentiment {
-            h4, h2 {
-                color: #f44336;
-            }
+        h4 {
+          color: #2196F3;
         }
 
-        &#num_tweet {
-            h4, h2 {
-                color: #2196F3;
-            }
-        }
+        // &#sentiment {
+        //     h4, h2 {
+        //         color: #f44336;
+        //     }
+        // }
+        //
+        // &#num_tweet {
+        //     h4, h2 {
+        //         color: #2196F3;
+        //     }
+        // }
     }
 }

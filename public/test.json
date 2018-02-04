@@ -8,6 +8,12 @@
   "num_tweets": 100,
   "num_retweets": 200,
   "num_favorites": 150,
+  "neg_sentiment_avg": -0.45959822484787477,
+  "neg_tweets_cnt": 282,
+  "neu_sentiment_avg": 0.022515783922454694,
+  "neutral_tweets_cnt": 1945,
+  "pos_sentiment_avg": 0.5392725150702538,
+  "pos_tweet_count": 1808,
   "clusters":
   [
     {
@@ -27,6 +33,46 @@
       "num_retweets": 150,
       "num_favorites": 150,
       "sentiment_score": -0.75,
+      "tweets_id": ["541278904204668929"],
+      "topics": ["thank you", "women", "gender gap"]
+    },
+    {
+      "id": 1,
+      "num_tweets": 50,
+      "num_users": 90,
+      "num_retweets": 150,
+      "num_favorites": 150,
+      "sentiment_score": -0.95,
+      "tweets_id": ["541278904204668929"],
+      "topics": ["thank you", "women", "gender gap"]
+    },
+    {
+      "id": 3,
+      "num_tweets": 50,
+      "num_users": 90,
+      "num_retweets": 150,
+      "num_favorites": 150,
+      "sentiment_score": 0.9,
+      "tweets_id": ["541278904204668929"],
+      "topics": ["thank you", "women", "gender gap"]
+    },
+    {
+      "id": 4,
+      "num_tweets": 50,
+      "num_users": 90,
+      "num_retweets": 150,
+      "num_favorites": 150,
+      "sentiment_score": -0.05,
+      "tweets_id": ["541278904204668929"],
+      "topics": ["thank you", "women", "gender gap"]
+    },
+    {
+      "id": 6,
+      "num_tweets": 50,
+      "num_users": 90,
+      "num_retweets": 150,
+      "num_favorites": 150,
+      "sentiment_score": -0.0,
       "tweets_id": ["541278904204668929"],
       "topics": ["thank you", "women", "gender gap"]
     }

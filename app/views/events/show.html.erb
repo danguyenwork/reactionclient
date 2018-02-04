@@ -1,114 +1,192 @@
 
 <div class="features section-spacing">
   <div class="container narrow-882 text-center">
-    <div class="row">
-      <div class="col-sm-4 summarystats">
-        <div class="content" id="sentiment">
-          <h4>Average Sentiment</h4>
-          <h2><%= @sentiment_score %></h2>
-        </div>
-      </div>
+    <div>
+      <ul class="nav nav-tabs">
+        <li class="nav active"><a href="#overall" data-toggle="tab">Overall Analysis</a></li>
+        <li class="nav"><a href="#cluster" data-toggle="tab">Cluster Analysis</a></li>
+    </ul>
 
-      <div class="col-sm-4 summarystats">
-        <div class="content" id="num_tweet">
-          <h4>Number of Tweets</h4>
-          <h2><%= @num_tweets %></h2>
-        </div>
-      </div>
+      <div class="tab-content">
 
-      <div class="col-sm-4 summarystats">
-        <div class="content" id="num_retweet">
-          <h4>Number of Retweets</h4>
-          <h2><%= @num_retweets %></h2>
-        </div>
-      </div>
+          <div role="tabpanel" class="tab-pane active" id="overall">
+            <div class="row mt40">
+              <div class="col-sm-6">
+                  <canvas id="myPieChart" width="200" height="250"></canvas>
+                  <script>
+                    var ctx = document.getElementById("myPieChart").getContext('2d');
+                    var data_points = <%=raw @tweets_cnt %>;
+                    var myPieChart = new Chart(ctx,{
+                      type: 'doughnut',
+                      data: {
+                        datasets: [{
+                            data: data_points,
+                            backgroundColor: ["rgb(255, 99, 132)","rgb(255, 205, 86)","#26C200"]
+                        }],
 
-    </div>
+                        // These labels appear in the legend and in the tooltips when hovering different arcs
+                        labels: [
+                            'Negative',
+                            'Neutral',
+                            'Positive'
+                        ],
 
-    <div class="row mt40">
-      <div class="col-sm-8">
-          <canvas id="myChart" width="200" height="350"></canvas>
-          <script>
-          var ctx = document.getElementById("myChart").getContext('2d');
-          var data_points = <%=raw @clusters_data.to_json %>;
 
-          var colors = ["#E53935", "#D25030", "#C0672C", "#AD7F28", "#88AE1F", "#76C51B", "#64DD17"];
+                      }
+                    })
+                  </script>
+                </div>
 
-          data_points.forEach(function(el, indx) {
-            if (el.data[0].y > 0) {
-              var colors_reverse = colors.reverse();
-              el.backgroundColor = colors_reverse[indx];
-            } else {
-              el.backgroundColor = colors[indx];
-            }
-          });
+                <div class="col-sm-2">
+                </div>
 
-          var myChart = new Chart(ctx, {
-              type: 'bubble',
-              data: {
-                datasets: data_points
-              },
-              options: {
-                legend: {
-                    display: false
-                 },
-                title: {
-                  display: false,
-                  text: 'Tweets clusters'
-                },
-                scales: {
-                  yAxes: [{
-                    scaleLabel: {
-                      display: false,
-                      labelString: "Sentiment"
-                    },
-                    ticks: {
-                      display: false
-                    }
-                  }],
-                  xAxes: [{
-                    display: false
-                  }]
-                },
-                responsive: true,
-                maintainAspectRatio: false,
-                onClick: function(e) {
-                    var elements = this.getElementAtEvent(e);
-                    // If you click on at least 1 elements ...
-                    if (elements.length > 0) {
-                        // Logs it
-                        // Here we get the data linked to the clicked bubble ...
-                        element = elements[0]
-                        console.log(element);
-                        element.custom = element.custom || {};
-                        element.custom.backgroundColor = "#333333";
+                <div class="col-sm-4 summarystats">
+                  <div class="row text-center">
+                      <div class="content mt40" id="sentiment">
+                        <h4>Average Sentiment</h4>
+                        <span style="color: red">< -100</span><span style="font-size: 30px;padding-left:20px;padding-right:20px"><%= @sentiment_score %></span><span style="color: green">100 ></span>
+                        <p>(<%= @average_sentiment %>)</p>
+                      </div>
 
-                        var datasetID = this.config.data.datasets[elements[0]._datasetIndex].id;
-                        // data gives you `x`, `y` and `r` values
-                        // var data = this.config.data.datasets[elements[0]._datasetIndex].data[elements[0]._index];
+                      <div class="content mt40" id="num_tweet">
+                        <h4>Number of Tweets</h4>
+                        <h2><%= @num_tweets %></h2>
+                      </div>
 
-                        var cluster_divs = $(document.querySelectorAll("[data-tag]"))
-                        cluster_divs.each(function(){
-                            $(this).addClass('hidden');
-                            if ($(this).data('tag') == datasetID) {
-                              $(this).removeClass('hidden')
+                      <div class="content mt40" id="num_retweet">
+                        <h4>Number of Retweets</h4>
+                        <h2><%= @num_retweets %></h2>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <div role="tabpanel" class="tab-pane fade" id="cluster">
+            <div class="row mt40">
+              <div class="panel panel-default">
+                <div class="panel-body text-left">Tweets are clustered into groups with similar sentiment and content. Click on a bubble to see  information about that cluster.</div>
+              </div>
+              <div class="col-sm-3" id="chart-container">
+                  <canvas id="myChart" width="200" height="350"></canvas>
+                  <script>
+                  var ctx = document.getElementById("myChart").getContext('2d');
+                  var data_points = <%=raw @clusters_data.to_json %>;
+
+                  var colors = ["#E5002D", "#E10500", "#DD3600", "#D96600", "#D59400", "#D2C000", "#B1CE00", "#81CA00", "#53C600","#26C200"];
+
+                  data_points.forEach(function(el, indx) {
+                    var indx = Math.floor((el.data[0].y + 1) * 10 / 2)
+                    console.log(el.data[0].y, indx, colors[indx])
+                    el.backgroundColor = colors[indx];
+                  });
+
+                  var myChart = new Chart(ctx, {
+                      type: 'bubble',
+                      data: {
+                        datasets: data_points
+                      },
+                      options: {
+                        legend: {
+                            display: false
+                         },
+                        title: {
+                          display: false,
+                          text: 'Tweets clusters'
+                        },
+                        tooltips: {enabled: false},
+                        scales: {
+                          yAxes: [{
+                            scaleLabel: {
+                              display: true,
+                              labelString: "Sentiment"
+                            },
+                            ticks: {
+                              display: true
+                            },
+                            gridLines: {
+                              lineWidth: 0,
+                              drawOnChartArea: false
                             }
-                        })
-                    }
-                }
-              }
-          });
-          </script>
+                          }],
+                          xAxes: [{
+                            display: false,
+                            gridLines: {
+                              lineWidth: 0,
+                              drawOnChartArea: false
+                            }
+                          }]
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        onClick: function(e) {
+                            var elements = this.getElementAtEvent(e);
+                            // If you click on at least 1 elements ...
+                            if (elements.length > 0) {
+                                // Logs it
+                                // Here we get the data linked to the clicked bubble ...
+                                element = elements[0]
+                                console.log(element);
+                                element.custom = element.custom || {};
+                                element.custom.backgroundColor = "#333333";
+
+                                var datasetID = this.config.data.datasets[elements[0]._datasetIndex].id;
+                                // data gives you `x`, `y` and `r` values
+                                // var data = this.config.data.datasets[elements[0]._datasetIndex].data[elements[0]._index];
+
+                                var cluster_divs = $(document.querySelectorAll("[data-tag]"))
+                                cluster_divs.each(function(){
+                                    $(this).addClass('hidden');
+                                    if ($(this).data('tag') == datasetID) {
+                                      $(this).removeClass('hidden')
+                                    }
+                                })
+                            }
+                        }
+                      }
+                  });
+                  </script>
+              </div>
+
+              <% @clusters.each do |cluster| %>
+                  <div class="col-sm-9 chart cluster-data hidden text-center" data-tag=<%= cluster['id'] %> >
+                    <div class="row">
+                      <div class="col-sm-4 summarystats">
+                        <div class="content" id="sentiment">
+                          <h4>Cluster Sentiment</h4>
+                          <span style="color: red">< -100</span><span style="font-size: 30px;padding-left:20px;padding-right:20px;margin-bottom:10px"><%= (cluster['sentiment_score'] * 100).round %></span><span style="color: green">100 ></span>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-4 summarystats">
+                        <div class="content" id="num_tweet">
+                          <h4>Cluster Tweets</h4>
+                          <span style="font-size:30px"><%= cluster['num_tweets'] %></span>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-4 summarystats">
+                        <div class="content" id="num_retweet">
+                          <h4>Cluster Retweets</h4>
+                          <span style="font-size:30px"><%= cluster['num_retweets'] %></span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row text-center mt40">
+                      <h3>Representative tweets</h3>
+                      <div class="col-sm-12 summarystats">
+                        <% @tweets[cluster['id']].each do |tweet|  %>
+                          <%= raw(tweet.html) %>
+                        <% end %>
+                      </div>
+                    </div>
+
+                  </div>
+              <% end %>
+            </div>
+          </div>
       </div>
-
-      <% @clusters.each do |cluster| %>
-        <div class="col-sm-4 chart pre-scrollable cluster-data hidden" data-tag=<%= cluster['id'] %> >
-          <% @tweets[cluster['id']].each do |tweet|  %>
-            <%= raw(tweet.html) %>
-          <% end %>
-        </div>
-      <% end %>
-
     </div>
   </div>
 </div>
