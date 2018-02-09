@@ -42,6 +42,7 @@ class EventsController < ApplicationController
     @currently_selected_cluster_id = @clusters[0]['id']
 
     @clusters.each_with_index do |cluster|
+      radius = [[cluster['num_tweets']/10, 5].max, 50].min 
       chart_data = {
         id: cluster['id'],
         backgroundColor: "rgba(255,221,50,0.2)",
@@ -49,16 +50,25 @@ class EventsController < ApplicationController
         data: [{
             x: 1,
             y: cluster['senti_score'],
-            r: cluster['num_tweets'] / 10
+            r: radius
         }]
       }
 
       int_array = cluster['tweet_ids'].map(&:to_i)
-      puts(int_array)
-      puts("--")
-      tweets_data = $tc.oembeds([int_array[0]])
+
+      tweets_data = []
+
+      int_array.each do |tweet_id|
+        begin
+          tweets_data.append($tc.oembed(tweet_id))
+        rescue Twitter::Error::NotFound
+
+        end
+      end
+
       @clusters_data.append(chart_data)
       @tweets[cluster['id']] = tweets_data
+
     end
   end
 
