@@ -1,6 +1,12 @@
 
+
+
 <div class="features section-spacing">
-  <div class="container narrow-882 text-center">
+
+
+  <div class="container narrow-882">
+    <p><%= link_to 'back', events_path%></p>
+    
     <div>
       <ul class="nav nav-tabs">
         <li class="nav active"><a href="#overall" data-toggle="tab">Overall Analysis</a></li>
@@ -151,8 +157,14 @@
               </div>
 
               <% @clusters.each do |cluster| %>
-                  <div class="col-sm-9 chart cluster-data hidden text-center" data-tag=<%= cluster['id'] %> >
-                    <div class="row">
+                  <div class="col-sm-9 chart cluster-data hidden" data-tag=<%= cluster['id'] %> >
+                    <div class="row mt40 text-center">
+                      <h3 class="blockquote">
+                        #<%= @topics[cluster['id']].join(', ') %>
+                      </h3>
+                    </div>
+
+                    <div class="row text-center mt40">
                       <div class="col-sm-4 summarystats">
                         <div class="content" id="sentiment">
                           <h4>Cluster Sentiment</h4>
@@ -174,6 +186,8 @@
                         </div>
                       </div>
                     </div>
+
+
 
                     <div class="row text-center mt40">
                       <h3>Representative tweets</h3>

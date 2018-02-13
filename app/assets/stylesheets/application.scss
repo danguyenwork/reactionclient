@@ -2,6 +2,12 @@
 @import "bootstrap";
 @import "base.scss";
 
+label, .actions {
+  margin-top: 10px
+}
+
+
+
 #chart-container {
   min-height: 500px;
 }

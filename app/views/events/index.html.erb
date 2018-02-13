@@ -1,13 +1,17 @@
 <!--hero section-->
-<% provide(:title, 'Reactions') %>
+<% provide(:title, 'Haystack') %>
 
 <div class="features" id="feature2">
-  <p class="text-center mt10">REACTIONS</p>
+  <p class="text-center mt10">HAYSTACK</p>
 </div>
 
 
 <div class="features section-spacing" id="feature2">
  <div class="container narrow-882 text-center">
+
+   <p><%= link_to 'Create', new_event_path%></p>
+
+   <hr>
 
    <% @events.each_with_index do |event, index| %>
      <% if index % 3 == 0 %>

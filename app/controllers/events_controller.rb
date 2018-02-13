@@ -38,11 +38,12 @@ class EventsController < ApplicationController
 
     @clusters_data = []
     @tweets = {}
+    @topics = {}
 
     @currently_selected_cluster_id = @clusters[0]['id']
 
     @clusters.each_with_index do |cluster|
-      radius = [[cluster['num_tweets']/10, 5].max, 50].min 
+      radius = [[cluster['num_tweets']/10, 5].max, 50].min
       chart_data = {
         id: cluster['id'],
         backgroundColor: "rgba(255,221,50,0.2)",
@@ -68,6 +69,7 @@ class EventsController < ApplicationController
 
       @clusters_data.append(chart_data)
       @tweets[cluster['id']] = tweets_data
+      @topics[cluster['id']] = cluster['topics']
 
     end
   end
